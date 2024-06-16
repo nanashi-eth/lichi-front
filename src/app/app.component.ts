@@ -11,4 +11,5 @@ import { LoginFormComponent } from './pages/auth/login-form/login-form.component
 })
 export class AppComponent {
   title = 'lichi';
+  logoUrl = 'logo.png';
 }

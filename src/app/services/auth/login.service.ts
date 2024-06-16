@@ -41,7 +41,7 @@ export class LoginService {
         }
       }),
       map((userData) => userData.token),
-      catchError(this.handleError)
+      // catchError(this.handleError)
     );
   }
 
@@ -54,9 +54,9 @@ export class LoginService {
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
-      console.error('Se ha producido un error', error.error);
+      console.error('Se ha producido un error:', error.error);
     } else {
-      console.error('Backend retornó el código de estado', error);
+      console.error('Backend retornó el código de estado', error.status, error.error);
     }
     return throwError(() => new Error('Algo falló. Por favor intente nuevamente.'));
   }
@@ -72,5 +72,4 @@ export class LoginService {
   get userToken(): string {
     return this.currentUserData.value;
   }
-
 }

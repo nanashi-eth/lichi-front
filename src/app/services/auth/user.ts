@@ -3,5 +3,5 @@ export interface User {
     username:string;
     lastname:string;
     firstname:string;
-    country:string;
+    picture: Uint8Array;
 }

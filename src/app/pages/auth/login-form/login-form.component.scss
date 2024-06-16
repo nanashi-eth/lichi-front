@@ -1,10 +1,12 @@
 :host {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 0;
-  margin: 100px 0px;
   background-color: #4e444b;
+}
+mat-card{
+  padding: 15px;
 }
 
 .login-card {
@@ -27,11 +29,12 @@
     text-align: center;
     /* Centra el texto dentro del mensaje de error */
     margin-top: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     /* Espacio superior reducido para los mensajes de error */
     font-size: 14px;
     /* Tamaño de fuente */
   }
+  
 
 
   .login-button {
@@ -41,6 +44,11 @@
   }
 }
 
+mat-error{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 mat-card-title,
 mat-card-content {
   display: flex;
@@ -48,6 +56,8 @@ mat-card-content {
 }
 
 mat-form-field {
+  padding-top: 10px;
+  padding-bottom: 10px;
   width: 100%;
   min-width: 200px;
 }

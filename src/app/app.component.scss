@@ -1,0 +1,36 @@
+
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.1); /* Fondo semi-transparente */
+  color: white;
+  padding: 10px;
+  z-index: 1000;
+  border-radius: 15px;
+}
+
+.logo {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.app-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: Spotify, sans-serif;
+}
+
+.app-content {
+  padding-top: 70px; 
+  overflow-y: auto;
+  height: calc(100vh - 70px); 
+}
+
+

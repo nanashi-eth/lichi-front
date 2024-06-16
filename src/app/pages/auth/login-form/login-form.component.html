@@ -1,6 +1,6 @@
 <mat-card class="login-card">
     <mat-card-header>
-        <mat-card-title>Login</mat-card-title>
+        <mat-card-title>Welcome to Lichi</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -10,7 +10,7 @@
                     <input matInput formControlName="username" title="Username" required>
                     @if(username.invalid && (username.dirty || username.touched)){
                     <mat-error>
-                        El username es requerido.
+                        Username is required.
                     </mat-error>
                     }
                 </mat-form-field>
@@ -22,7 +22,7 @@
                     <input matInput formControlName="password" title="Password" type="password" required>
                     @if(password.invalid && (password.dirty || password.touched)){
                     <mat-error>
-                        La contraseña es requerida.
+                        Password is required.
                     </mat-error>
                     }
                 </mat-form-field>
