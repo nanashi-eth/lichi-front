@@ -1,9 +1,9 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginRequest } from './loginRequest';
-import  {  Observable, throwError, catchError, BehaviorSubject , tap, map} from 'rxjs';
-import { User } from './user';
-import { environment } from 'src/environments/environment';
+import { Observable, throwError, BehaviorSubject } from 'rxjs';
+import { tap, catchError, map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,49 +11,65 @@ import { environment } from 'src/environments/environment';
 export class LoginService {
 
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  currentUserData: BehaviorSubject<String> =new BehaviorSubject<String>("");
+  currentUserData: BehaviorSubject<string> = new BehaviorSubject<string>("");
 
   constructor(private http: HttpClient) { 
-    this.currentUserLoginOn=new BehaviorSubject<boolean>(sessionStorage.getItem("token")!=null);
-    this.currentUserData=new BehaviorSubject<String>(sessionStorage.getItem("token") || "");
+    if (this.isSessionStorageAvailable()) {
+      this.currentUserLoginOn.next(sessionStorage.getItem("token") != null);
+      this.currentUserData.next(sessionStorage.getItem("token") || "");
+    }
   }
 
-  login(credentials:LoginRequest):Observable<any>{
-    return this.http.post<any>(environment.urlHost+"auth/login",credentials).pipe(
-      tap( (userData) => {
-        sessionStorage.setItem("token", userData.token);
-        this.currentUserData.next(userData.token);
-        this.currentUserLoginOn.next(true);
+  private isSessionStorageAvailable(): boolean {
+    try {
+      const testKey = '__test__';
+      sessionStorage.setItem(testKey, testKey);
+      sessionStorage.removeItem(testKey);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  login(credentials: LoginRequest): Observable<any> {
+    return this.http.post<any>(`${environment.urlHost}auth/login`, credentials).pipe(
+      tap((userData) => {
+        if (this.isSessionStorageAvailable()) {
+          sessionStorage.setItem("token", userData.token);
+          this.currentUserData.next(userData.token);
+          this.currentUserLoginOn.next(true);
+        }
       }),
-      map((userData)=> userData.token),
+      map((userData) => userData.token),
       catchError(this.handleError)
     );
   }
 
-  logout():void{
-    sessionStorage.removeItem("token");
-    this.currentUserLoginOn.next(false);
+  logout(): void {
+    if (this.isSessionStorageAvailable()) {
+      sessionStorage.removeItem("token");
+      this.currentUserLoginOn.next(false);
+    }
   }
 
-  private handleError(error:HttpErrorResponse){
-    if(error.status===0){
-      console.error('Se ha producio un error ', error.error);
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      console.error('Se ha producido un error', error.error);
+    } else {
+      console.error('Backend retornó el código de estado', error);
     }
-    else{
-      console.error('Backend retornó el código de estado ', error);
-    }
-    return throwError(()=> new Error('Algo falló. Por favor intente nuevamente.'));
+    return throwError(() => new Error('Algo falló. Por favor intente nuevamente.'));
   }
 
-  get userData():Observable<String>{
+  get userData(): Observable<string> {
     return this.currentUserData.asObservable();
   }
 
-  get userLoginOn(): Observable<boolean>{
+  get userLoginOn(): Observable<boolean> {
     return this.currentUserLoginOn.asObservable();
   }
 
-  get userToken():String{
+  get userToken(): string {
     return this.currentUserData.value;
   }
 
