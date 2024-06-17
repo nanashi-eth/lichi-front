@@ -1,29 +1,82 @@
+/* Componente de lista de canciones */
 div {
   padding: 16px;
 }
-.mat-selection-list {
+
+.song-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  padding: 10px 16px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.song-header-item {
+  flex: 1;
+  text-align: center;
+}
+
+mat-selection-list {
   list-style: none;
   padding: 0;
 }
-.song-details {
-  flex: 1;
+
+mat-list-option {
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
-.song-item {
+
+.song-details {
+  height: auto;
   display: flex;
   align-items: center;
-  padding: 8px;
   border-bottom: 1px solid #ccc;
 }
 
-.song-image {
-  width: 64px;
-  height: 64px;
-  object-fit: cover; /* Ajusta la imagen manteniendo la proporción y cubriendo el contenedor */
-  margin-right: 16px;
+.song-item {
+  flex: 1;
+  text-align: left;
+  padding: 0 10px;
 }
 
 
-.song-item, h1, h2, p {
+/* Estilos de fuente para todos los elementos dentro de .song-details */
+.song-details p {
+  margin: 0;
   font-family: Spotify, 'Spotify', sans-serif;
 }
 
+.song-div {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.song-cover {
+  margin-right: 16px;
+}
+
+.song-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.song-title, .song-artist {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.song-div img {
+  width: 48px;
+  height: 48;
+  border-radius: 10px;
+  object-fit: cover;
+  border-radius: 5px;
+}

@@ -8,15 +8,42 @@
   [class.menu-open]="isMenuOpen"
   [class.menu-close]="!isMenuOpen"
   opened>
-        <button type="button" (click)="onToolbarMenuToggle()">
-          Toggle sidenav
+    <mat-list id="menus">
+      <mat-list-item>
+        <mat-icon
+          (click)="onToolbarMenuToggle()"
+          class="menu-icon">subject</mat-icon>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar class="avatar"></div>
+          </mat-card-header>
+        </mat-card>
+      </mat-list-item>
+      <mat-list-item class="menu-button">
+        <a class="menu-item" routerLink="/home">
+          <mat-icon class="menu-icon">home</mat-icon>
+          <span>Home</span>
+        </a>
+      </mat-list-item>
+      <mat-list-item class="menu-button">
+        <a class="menu-item" routerLink="/about">
+          <mat-icon class="menu-icon">about</mat-icon>
+          <span>About</span>
+        </a>
+      </mat-list-item>
+      <!--
+      <mat-list-item>
+        <button class="menu-item" mat-flat-button>
+          <mat-icon class="menu-icon">settings_application</mat-icon>
+          Settings
         </button>
-      <ul>
-        <li><a routerLink="/home">Home</a></li>
-        <li><a routerLink="/about">About</a></li>
-      </ul>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <app-song-list/>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+      </mat-list-item>
+      -->
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-song-list></app-song-list>
+  </mat-sidenav-content>
+</mat-sidenav-container>

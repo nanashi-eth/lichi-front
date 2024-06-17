@@ -1,18 +1,37 @@
 <div *ngIf="loading">Cargando canciones...</div>
 <div *ngIf="!loading">
-  <h1>Lista de Canciones</h1>
+  <h1 style="text-align: center;">Lista de Canciones</h1>
+  <div class="song-header">
+    <div class="song-header-item">Popularidad</div>
+    <div class="song-header-item">Cover</div>
+    <div class="song-header-item">Título</div>
+    <div class="song-header-item">Artista</div>
+    <div class="song-header-item">Género(s)</div>
+    <div class="song-header-item">Año</div>
+    <div class="song-header-item">Duración</div>
+  </div>
   <mat-selection-list>
     <mat-list-option *ngFor="let cancion of canciones">
-      <div class="song-item">
-        <img *ngIf="cancion.coverImage" [src]="getCoverImageUrl(cancion.coverImage)" alt="Cover Image"  class="song-image" loading="lazy">
-          <span matListItemLine>
-            <p>{{ cancion.title }}</p>
-            <p>{{ cancion.artist }}</p>
-            <p>{{ cancion.songYear }}</p>
-            <p>{{ cancion.genre }}</p>
-            <p>{{ formatDuration(cancion.durationMs) }}</p>
-            <p>{{ cancion.popularity }}</p>
-          </span>
+      <div class="song-details">
+        <div class="song-item">{{ cancion.popularity }}</div>
+        <div class="song-div">
+          <div class="song-cover">
+            <img *ngIf="cancion.coverImage" [src]="getCoverImageUrl(cancion.coverImage)" alt="Cover Image" class="song-image" loading="lazy">
+          </div>
+          <div class="song-info">
+            <div class="song-title">{{ cancion.title }}</div>
+            <div class="song-artist">{{ cancion.artist }}</div>
+          </div>
+        </div>
+        <div class="song-item">
+          <p>{{ cancion.genre }}</p>
+        </div>
+        <div class="song-item">
+          <p>{{ cancion.songYear }}</p>
+        </div>
+        <div class="song-item">
+          <p>{{ formatDuration(cancion.durationMs) }}</p>
+        </div>
       </div>
     </mat-list-option>
   </mat-selection-list>

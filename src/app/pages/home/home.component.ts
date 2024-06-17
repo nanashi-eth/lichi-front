@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIcon } from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
 import { Router } from '@angular/router';
 import { SongListComponent } from '../shared/song-list/song-list.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatSidenavModule, SongListComponent],
+  imports: [MatSidenavModule, SongListComponent, MatIcon, MatListModule, MatCardModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

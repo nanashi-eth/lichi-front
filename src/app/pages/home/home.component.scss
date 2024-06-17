@@ -1,20 +1,5 @@
-/* app.component.scss */
 .example-container {
   height: 100vh;
-}
-
-mat-sidenav {
-  width: 250px;
-  background-color: #333;
-  color: white;
-  padding: 20px;
-}
-
-.sidebar-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
 }
 
 .logo {
@@ -29,31 +14,80 @@ mat-sidenav {
   color: #fff;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-
-  li {
-    margin: 10px 0;
-
-    a {
-      color: #fff;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-}
 #sidenav {
+  background-color: rgba(20, 18, 20, 0.7);
   width: 240px;
+  padding: 0px;
+}
+
+#sidenav .menu-item,
+#sidenav mat-card {
+  background-color: rgba(20, 18, 20, 0);
+  width: calc(100% - 4px);
+  /* Para que ocupe todo el ancho menos los márgenes laterales */
+  margin: 0 2px;
+  /* Márgenes laterales de 2px */
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  /* Para eliminar el subrayado de los enlaces */
 }
 
 #sidenav.menu-close {
-  width: 70px
+  width: 80px;
 }
 
 #sidenav.menu-open {
-  width: 240px
+  width: 240px;
+  overflow-x: hidden;
+}
+
+#sidenav .avatar {
+  background-image: url('../../../../public/logo.png');
+  background-size: cover;
+}
+
+#sidenav .mat-list-item-content {
+  padding: 0;
+}
+
+#sidenav .menu-item {
+  width: calc(92% - 4px);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  text-align: left;
+  padding: 10px;
+}
+
+#sidenav.menu-close .menu-item {
+  width: 50px;;
+  overflow: hidden; /* Oculta el texto que desborda */
+  white-space: nowrap; /* Evita el salto de línea del texto */
+}
+#sidenav.menu-close .menu-item span {
+  display: none; /* Oculta el texto dentro de menu-item */
+}
+#sidenav.menu-close .menu-item .menu-icon {
+  margin-right: 0px;
+}
+
+
+.menu-button {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+#sidenav .menu-item:hover {
+  background: rgba(60, 52, 56, 0.9);
+}
+
+#sidenav .menu-icon {
+  margin-right: 20px;
+  margin-left: 12px;
+  font-size: 24px;
+  /* Asegura que todos los íconos tengan el mismo tamaño */
+  vertical-align: middle;
+  /* Alinea verticalmente los íconos */
 }
