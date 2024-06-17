@@ -4,15 +4,15 @@
   <mat-selection-list>
     <mat-list-option *ngFor="let cancion of canciones">
       <div class="song-item">
-        <img *ngIf="cancion.coverImage" [src]="getCoverImageUrl(cancion.coverImage)" alt="Cover Image" width="256" height="256" class="song-image" loading="lazy">
-        <div class="song-details">
-          <h2>{{ cancion.title }}</h2>
-          <p>Artista: {{ cancion.artist }}</p>
-          <p>Año: {{ cancion.songYear }}</p>
-          <p>Género: {{ cancion.genre }}</p>
-          <p>Duración: {{ formatDuration(cancion.durationMs) }}</p>
-          <p>Popularidad: {{ cancion.popularity }}</p>
-        </div>
+        <img *ngIf="cancion.coverImage" [src]="getCoverImageUrl(cancion.coverImage)" alt="Cover Image"  class="song-image" loading="lazy">
+          <span matListItemLine>
+            <p>{{ cancion.title }}</p>
+            <p>{{ cancion.artist }}</p>
+            <p>{{ cancion.songYear }}</p>
+            <p>{{ cancion.genre }}</p>
+            <p>{{ formatDuration(cancion.durationMs) }}</p>
+            <p>{{ cancion.popularity }}</p>
+          </span>
       </div>
     </mat-list-option>
   </mat-selection-list>

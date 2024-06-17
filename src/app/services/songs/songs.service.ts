@@ -16,7 +16,21 @@ export class CancionesService {
   constructor(private http: HttpClient) { }
 
   private getToken(): string {
-    return sessionStorage.getItem('token') || '';
+    if (this.isSessionStorageAvailable()) {
+      return sessionStorage.getItem('token') || '';
+    }
+    return '';
+  }
+
+  private isSessionStorageAvailable(): boolean {
+    try {
+      const testKey = '__test__';
+      sessionStorage.setItem(testKey, testKey);
+      sessionStorage.removeItem(testKey);
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   private getHeaders(): HttpHeaders {
