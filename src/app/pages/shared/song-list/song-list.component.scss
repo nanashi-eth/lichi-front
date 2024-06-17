@@ -1,0 +1,58 @@
+div {
+  padding: 16px;
+}
+h1 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.mat-selection-list {
+  list-style: none;
+  padding: 0;
+}
+.song-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+.song-image {
+  margin-right: 16px;
+}
+.song-details {
+  flex: 1;
+}
+.song-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.song-image {
+  width: 256px;
+  height: 256px;
+  object-fit: cover; /* Ajusta la imagen manteniendo la proporción y cubriendo el contenedor */
+  margin-right: 16px;
+}
+
+.song-details {
+  flex: 1;
+}
+.song-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.song-image {
+  width: 256px;
+  height: 256px;
+  object-fit: cover; /* Ajusta la imagen manteniendo la proporción y cubriendo el contenedor */
+  margin-right: 16px;
+}
+
+.song-item, h1, h2, p {
+  font-family: Spotify, 'Spotify', sans-serif;
+}
+

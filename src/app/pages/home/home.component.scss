@@ -1,54 +1,59 @@
 /* app.component.scss */
 .example-container {
-    height: 100vh;
-  }
-  
-  mat-sidenav {
-    width: 250px;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-  }
-  
-  .sidebar-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .logo {
-    width: 100px;
-    height: auto;
-    margin-bottom: 10px;
-  }
-  
-  .app-name {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  
-    li {
-      margin: 10px 0;
-  
-      a {
-        color: #fff;
-        text-decoration: none;
-        &:hover {
-          text-decoration: underline;
-        }
+  height: 100vh;
+}
+
+mat-sidenav {
+  width: 250px;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.app-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    margin: 10px 0;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
-  
-  mat-sidenav-content {
-    background-color: #f4f4f4;
-    padding: 20px;
-    overflow-y: auto;
-  }
-  
+}
+#sidenav {
+  width: 240px;
+}
+
+#sidenav.menu-close {
+  width: 70px
+}
+
+#sidenav.menu-open {
+  width: 240px
+}

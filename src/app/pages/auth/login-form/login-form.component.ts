@@ -50,7 +50,7 @@ export class LoginFormComponent {
           console.log(userData);
         },
         error: (err: HttpErrorResponse) => {
-          if (err.status === 403) {
+          if (err.status === 401) {
             this.loginError = 'Invalid credentials.';
           } else if (err.status === 0) {
             this.loginError = 'Server connection error. Please try again later.';

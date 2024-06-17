@@ -1,6 +1,14 @@
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #drawer mode="side" opened>
-        <button type="button" (click)="drawer.toggle()">
+  <mat-sidenav
+  mode="side"
+  #sidenav
+  id="sidenav"
+  [fixedInViewport]="options.fixed" [fixedTopGap]="options.top"
+  [fixedBottomGap]="options.bottom"
+  [class.menu-open]="isMenuOpen"
+  [class.menu-close]="!isMenuOpen"
+  opened>
+        <button type="button" (click)="onToolbarMenuToggle()">
           Toggle sidenav
         </button>
       <ul>
@@ -9,6 +17,6 @@
       </ul>
     </mat-sidenav>
     <mat-sidenav-content>
-      <p>Main</p>
+      <app-song-list/>
     </mat-sidenav-content>
   </mat-sidenav-container>
