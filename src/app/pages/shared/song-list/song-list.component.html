@@ -4,8 +4,7 @@
   <mat-selection-list>
     <mat-list-option *ngFor="let cancion of canciones">
       <div class="song-item">
-        <img *ngIf="cancion.coverImage" [src]="getCoverImageUrl(cancion.coverImage)" alt="Cover Image" width="256"
-          height="256" class="song-image">
+        <img *ngIf="cancion.coverImage" [src]="getCoverImageUrl(cancion.coverImage)" alt="Cover Image" width="256" height="256" class="song-image" loading="lazy">
         <div class="song-details">
           <h2>{{ cancion.title }}</h2>
           <p>Artista: {{ cancion.artist }}</p>
