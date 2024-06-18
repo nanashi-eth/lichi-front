@@ -18,6 +18,7 @@
         <mat-card>
           <mat-card-header>
             <div mat-card-avatar class="avatar"></div>
+            <mat-card-title class="header">{{username}}</mat-card-title>
           </mat-card-header>
         </mat-card>
       </mat-list-item>
@@ -35,8 +36,14 @@
       </mat-list-item>
       <mat-list-item class="menu-button">
         <a class="menu-item" routerLink="/about">
-          <mat-icon class="menu-icon">library_music</mat-icon>
+          <mat-icon class="menu-icon">info</mat-icon>
           <span>About</span>
+        </a>
+      </mat-list-item>
+      <mat-list-item  class="menu-button">
+        <a class="menu-item" (click)="logout()">
+          <mat-icon class="menu-icon">logout</mat-icon>
+          <span>Logout</span>
         </a>
       </mat-list-item>
     </mat-list>

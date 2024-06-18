@@ -32,6 +32,14 @@
   text-decoration: none;
   /* Para eliminar el subrayado de los enlaces */
 }
+#sidenav.menu-close .header{
+  display: none;
+}
+
+mat-card-header{
+  align-items: center;
+}
+
 
 #sidenav.menu-close {
   width: 80px;
@@ -80,7 +88,7 @@
   overflow: hidden; /* Oculta el texto que desborda */
   white-space: nowrap; /* Evita el salto de línea del texto */
 }
-#sidenav.menu-close .menu-item span {
+#sidenav.menu-close .menu-item span{
   display: none; /* Oculta el texto dentro de menu-item */
 }
 #sidenav.menu-close .menu-item .menu-icon {
@@ -88,6 +96,8 @@
 }
 
 
+
+#sidenav.menu-close 
 .menu-button {
   padding-left: 2px;
   padding-right: 2px;
@@ -104,4 +114,8 @@
   /* Asegura que todos los íconos tengan el mismo tamaño */
   vertical-align: middle;
   /* Alinea verticalmente los íconos */
+}
+
+.avatar{
+  margin-bottom: 0;
 }

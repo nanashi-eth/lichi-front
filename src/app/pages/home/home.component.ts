@@ -7,6 +7,7 @@ import { UserService } from '../../services/user/user.service';
 import { User } from '../../services/auth/user'; 
 import { Router } from '@angular/router';
 import { SongListComponent } from '../shared/song-list/song-list.component';
+import { LoginService } from '../../services/auth/login.service';
 
 @Component({
   selector: 'app-home',
@@ -28,9 +29,13 @@ export class HomeComponent {
   contentMargin = 240;
   username: string = '';
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private loginService: LoginService, private router: Router) {}
 
   ngOnInit() {
+    if (!this.loginService.userToken) {
+      this.router.navigate(['/login']);
+      return;
+    }
     this.userService.getUser(1).subscribe(
       (user: User) => {
         this.username = user.username; 
@@ -39,6 +44,11 @@ export class HomeComponent {
         console.error('Error al obtener el usuario:', error);
       }
     );
+  }
+
+  logout() {
+    this.loginService.logout();
+    this.router.navigate(['/login']);
   }
 
 

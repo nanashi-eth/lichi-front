@@ -1,30 +1,42 @@
-<div *ngIf="loading">Cargando canciones...</div>
+<div *ngIf="loading" class="loading">Cargando canciones...</div>
 @if (!loading) {
-  <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar canciones...">
-  <button (click)="search()">Buscar</button>
-  <div>
-  <h1 >Lista de Canciones</h1>
-  <div class="song-header">
-    <div class="song-header-item">Popularidad</div>
-    <div class="song-header-item">Cover</div>
-    <div class="song-header-item">Título</div>
-    <div class="song-header-item">Artista</div>
-    <div class="song-header-item">Género(s)</div>
-    <div class="song-header-item">Año</div>
-    <div class="song-header-item">Duración</div>
+<svg style="display: none">
+  <symbol id="magnify" viewBox="0 0 18 18" height="100%" width="100%">
+    <path
+      d="M12.5 11h-.8l-.3-.3c1-1.1 1.6-2.6 1.6-4.2C13 2.9 10.1 0          6.5 0S0 2.9 0 6.5 2.9 13 6.5 13c1.6 0 3.1-.6 4.2-1.6l.3.3v.8l5 5          1.5-1.5-5-5zm-6 0C4 11 2 9 2 6.5S4 2 6.5 2 11 4 11 6.5 9 11 6.5            11z"
+      fill="#fff" fill-rule="evenodd" />
+  </symbol>
+</svg>
+<div class="container">
+  <div class="top">
+    <h1>Lista de Canciones</h1>
+    <div class="search-bar">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar canciones...">
+      <div class="search-btn">
+        <svg class="icon icon-18" (click)="search()">
+          <use xlink:href="#magnify"></use>
+        </svg>
+      </div>
+    </div>
+    <div class="song-header">
+      <div class="song-header-item">Popularidad</div>
+      <div class="song-header-item">Título</div>
+      <div class="song-header-item">Género(s)</div>
+      <div class="song-header-item">Año</div>
+      <div class="song-header-item">Duración</div>
+    </div>
   </div>
   <mat-selection-list>
     <mat-list-option *ngFor="let cancion of canciones">
       <div class="song-details">
         <div class="song-item">{{ cancion.popularity }}</div>
-        <div class="song-div">
-          <div class="song-cover">
-            <img *ngIf="cancion.coverImage" [src]="getCoverImageUrl(cancion.coverImage)" alt="Cover Image" class="song-image" loading="lazy">
-          </div>
-          <div class="song-info">
-            <div class="song-title">{{ cancion.title }}</div>
-            <div class="song-artist">{{ cancion.artist }}</div>
-          </div>
+        <div class="song-item song-cover">
+          <img *ngIf="cancion.coverImage" [src]="getCoverImageUrl(cancion.coverImage)" alt="Cover Image"
+               class="song-image" loading="lazy" width="48" height="48">
+        </div>
+        <div class="song-info song-item">
+          <div class="song-title">{{ cancion.title }}</div>
+          <div class="song-artist">{{ cancion.artist }}</div>
         </div>
         <div class="song-item">
           <p>{{ cancion.genre }}</p>
@@ -38,7 +50,7 @@
       </div>
     </mat-list-option>
   </mat-selection-list>
-  <div class="pagination-controls">
+  <div class="pag">
     <button mat-mini-fab (click)="previousPage()" [disabled]="currentPage === 0">
       <mat-icon>navigate_before</mat-icon>
     </button>
@@ -46,5 +58,6 @@
       <mat-icon>navigate_next</mat-icon>
     </button>
   </div>
+
 </div>
 }

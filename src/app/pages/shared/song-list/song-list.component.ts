@@ -4,14 +4,16 @@ import { CommonModule } from '@angular/common';
 import { Song } from '../../../services/songs/song';
 import { CancionesService } from '../../../services/songs/songs.service';
 import {MatListModule} from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIcon } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { Router } from '@angular/router';
 import { SongsRequest } from '../../../services/songs/songsRequest';
+import { LoginService } from '../../../services/auth/login.service';
 
 @Component({
   selector: 'app-song-list',
   standalone: true,
-  imports: [CommonModule, MatListModule, MatIconModule, MatButtonModule, FormsModule],
+  imports: [CommonModule, MatListModule, MatIcon, MatButtonModule, FormsModule],
   templateUrl: './song-list.component.html',
   styleUrl: './song-list.component.scss'
 })
@@ -24,9 +26,12 @@ export class SongListComponent {
   totalElements = 0;
   searchTerm = '';
 
-  constructor(private cancionesService: CancionesService) { }
+  constructor(private cancionesService: CancionesService, private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
+    if (!this.loginService.userToken) {
+      return;
+    }
     this.loadCanciones();
   }
 

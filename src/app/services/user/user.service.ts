@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, retry, throwError } from 'rxjs';
 import { User } from '../auth/user';
@@ -11,8 +11,34 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
+  private getToken(): string {
+    if (this.isSessionStorageAvailable()) {
+      return sessionStorage.getItem('token') || '';
+    }
+    return '';
+  }
+
+  private isSessionStorageAvailable(): boolean {
+    try {
+      const testKey = '__test__';
+      sessionStorage.setItem(testKey, testKey);
+      sessionStorage.removeItem(testKey);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  private getHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.getToken()}`
+    });
+  }
+
   getUser(id:number):Observable<User>{
-    return this.http.get<User>(environment.urlApi+"user/"+id).pipe(
+    const headers = this.getHeaders();
+    return this.http.get<User>(environment.urlApi+"api/users/"+id, { headers}).pipe(
       catchError(this.handleError)
     )
   }

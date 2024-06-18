@@ -1,17 +1,30 @@
-/* Componente de lista de canciones */
-div {
-  padding: 16px;
+@font-face {
+  font-family: 'Spotify';
+  src: url('../../../../assets/spotify.otf') format('otf');
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  height: 100vh;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
 .song-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: bold;
-  background-color: #f0f0f0;
-  padding: 10px 16px;
   border-radius: 10px;
-  margin-bottom: 10px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(70, 61, 67, 0.8); /* Fondo con transparencia */
+  color: #c07862; /* Color de texto */
+  padding: 12px 16px;
+  font-family: Spotify, sans-serif; /* Fuente Spotify */
 }
 
 .song-header-item {
@@ -19,64 +32,193 @@ div {
   text-align: center;
 }
 
-mat-selection-list {
-  list-style: none;
-  padding: 0;
+.song-header-item:first-child {
+  flex: 0.5; /* Ajuste de tamaño para la primera columna */
 }
 
-mat-list-option {
-  padding: 5px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+.song-header-item:last-child {
+  flex: 0.8; /* Ajuste de tamaño para la última columna */
 }
 
-.song-details {
-  height: auto;
+input[type="text"] {
+  padding: 8px;
+  border: none;
+  color: #c07862;
+  border-radius: 4px;
+  font-family: 'Spotify', sans-serif; /* Fuente Spotify */
+  outline: none;
+}
+
+input[type="text"]::placeholder {
+  color: #aaa;
+}
+
+
+
+.button-icon {
+  margin-left: 8px;
+}
+
+
+
+.search-bar {
+  left: 50%;
+  transform: translateX(-50%);
+  height: 44px;
+  width: 50%;
+  border-radius: 40px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #ccc;
+  padding: 0 0 0 20px;
+  position: relative;
+  background: #fff;
 }
 
-.song-item {
-  flex: 1;
-  text-align: left;
-  padding: 0 10px;
+.input {
+  border: none;
+  height: 25px;
+  width: 150px;
+  color: #ffffff;
+  font-size: 15px;
+  outline: none;
 }
 
 
-/* Estilos de fuente para todos los elementos dentro de .song-details */
-.song-details p {
-  margin: 0;
-  font-family: Spotify, 'Spotify', sans-serif;
-}
 
-.song-div {
+
+.search-btn {
+  background: #c07862;
+  border-radius: 20px;
+  height: 40px;
+  min-width: 40px;
   display: flex;
   align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  justify-content: center;
+  cursor: pointer;
+  right: 2px;
+  position: absolute;
+  transition: all 1s ease;
 }
 
-.song-cover {
-  margin-right: 16px;
+.icon {
+  display: inline-flex;
 }
 
-.song-info {
-  flex: 1;
+.icon-18 {
+  width: 18px;
+  height: 18px;
+}
+
+
+.top{
+  position: fixed;
+}
+
+
+.container {
+  margin-top: 80px; /* Ajustar este valor según el tamaño del header fijo */
   display: flex;
   flex-direction: column;
 }
 
-.song-title, .song-artist {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 4px;
+.top {
+  border-radius: 15px;
+  position: fixed;
+  top: 95px; /* Ajustar este valor según el tamaño del header fijo */
+  width: calc(100% - 240px);
+  background-color: rgba(70, 61, 67, 1); /* Fondo con transparencia */
+  color: #c07862; /* Color de texto */
+  font-family: 'Spotify', sans-serif; /* Fuente Spotify */
+  z-index: 1000; /* Asegurar que esté por encima del contenido desplazado */
 }
 
-.song-div img {
-  width: 48px;
-  height: 48;
-  border-radius: 10px;
-  object-fit: cover;
-  border-radius: 5px;
+h1 {
+  font-family: 'Spotify', sans-serif; /* Fuente Spotify */
+  color: #c07862; /* Color del título */
+  margin: 0;
 }
+
+.song-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #463d43; /* Color de fondo del encabezado */
+  color: #c07862; /* Color de texto */
+  padding: 12px 16px;
+  font-family: 'Spotify', sans-serif; /* Fuente Spotify */
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.song-header-item {
+  flex: 1;
+  text-align: center;
+}
+
+.song-header-item:first-child {
+  flex: 0.5; /* Ajuste de tamaño para la primera columna */
+}
+
+.song-header-item:last-child {
+  flex: 0.8; /* Ajuste de tamaño para la última columna */
+}
+
+mat-selection-list {
+  margin-top: 100px;
+  max-height: 390px;
+  overflow: auto;
+}
+
+.pag{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+mat-icon{
+  background-color: rgba(0,0,0,0);
+  color: #fff;
+}
+button{
+  background-color: #463d43;
+}
+
+.song-details {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.song-item {
+  padding: 8px;
+}
+
+.song-item:first-child {
+  width: 60px; /* Ancho fijo para la columna de popularidad */
+}
+.song-item{
+  width: 60px;
+}
+
+.song-item.song-cover {
+  width: 60px; /* Ancho fijo para la columna de la imagen */
+}
+
+.song-cover img {
+  width: 48px; /* Tamaño de la imagen (ajustar según necesidad) */
+  height: 48px;
+  border-radius: 4px; /* Opcional: añade bordes redondeados a la imagen */
+}
+
+.song-info {
+  flex: 1 1 auto; /* Las columnas restantes ocupan el espacio restante */
+   /* Espacio entre la imagen y la información */
+}
+
+.song-title {
+  font-weight: bold;
+}
+
