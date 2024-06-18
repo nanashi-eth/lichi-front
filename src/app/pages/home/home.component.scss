@@ -47,6 +47,20 @@
   background-size: cover;
 }
 
+.content-container {
+  margin-top: 100px;
+  flex: 1; /* Hace que el contenido ocupe todo el espacio disponible */
+  transition: margin-left 0.3s ease; /* Transición suave para el cambio de margen */
+}
+
+#sidenav.menu-open .content-container {
+  margin-left: 240px; /* Ajuste del margen para abrir el menú */
+}
+
+#sidenav.menu-close .content-container {
+  margin-left: 80px; /* Ajuste del margen para cerrar el menú */
+}
+
 #sidenav .mat-list-item-content {
   padding: 0;
 }
@@ -62,7 +76,7 @@
 }
 
 #sidenav.menu-close .menu-item {
-  width: 50px;;
+  width: 50px;
   overflow: hidden; /* Oculta el texto que desborda */
   white-space: nowrap; /* Evita el salto de línea del texto */
 }

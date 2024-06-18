@@ -1,6 +1,9 @@
 <div *ngIf="loading">Cargando canciones...</div>
-<div *ngIf="!loading">
-  <h1 style="text-align: center;">Lista de Canciones</h1>
+@if (!loading) {
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar canciones...">
+  <button (click)="search()">Buscar</button>
+  <div>
+  <h1 >Lista de Canciones</h1>
   <div class="song-header">
     <div class="song-header-item">Popularidad</div>
     <div class="song-header-item">Cover</div>
@@ -35,4 +38,13 @@
       </div>
     </mat-list-option>
   </mat-selection-list>
+  <div class="pagination-controls">
+    <button mat-mini-fab (click)="previousPage()" [disabled]="currentPage === 0">
+      <mat-icon>navigate_before</mat-icon>
+    </button>
+    <button mat-mini-fab (click)="nextPage()" [disabled]="currentPage === (totalPages - 1)">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+  </div>
 </div>
+}

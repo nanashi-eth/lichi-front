@@ -12,7 +12,7 @@
       <mat-list-item>
         <mat-icon
           (click)="onToolbarMenuToggle()"
-          class="menu-icon">subject</mat-icon>
+          class="menu-icon">menu</mat-icon>
       </mat-list-item>
       <mat-list-item>
         <mat-card>
@@ -29,21 +29,19 @@
       </mat-list-item>
       <mat-list-item class="menu-button">
         <a class="menu-item" routerLink="/about">
-          <mat-icon class="menu-icon">about</mat-icon>
+          <mat-icon class="menu-icon">library_music</mat-icon>
+          <span>Playlists</span>
+        </a>
+      </mat-list-item>
+      <mat-list-item class="menu-button">
+        <a class="menu-item" routerLink="/about">
+          <mat-icon class="menu-icon">library_music</mat-icon>
           <span>About</span>
         </a>
       </mat-list-item>
-      <!--
-      <mat-list-item>
-        <button class="menu-item" mat-flat-button>
-          <mat-icon class="menu-icon">settings_application</mat-icon>
-          Settings
-        </button>
-      </mat-list-item>
-      -->
     </mat-list>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content class="content-container">
     <app-song-list></app-song-list>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
@@ -40,20 +40,29 @@ export class CancionesService {
     });
   }
 
-  getCanciones(): Observable<Song[]> {
+  getCanciones(page: number, limit: number): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.get<Song[]>(this.apiUrl, { headers }).pipe(
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('size', limit.toString());
+
+    return this.http.get<Song[]>(this.apiUrl, { headers, params }).pipe(
       catchError(this.handleError)
     );
   }
 
-  getCancionesConFiltros(request: SongsRequest): Observable<Song[]> {
+  getCancionesConFiltros(keyword: string): Observable<any> {
     const headers = this.getHeaders();
-    const params = {
-      ...request
-    };
+    let params = new HttpParams();
 
-    return this.http.get<Song[]>(this.apiUrl, { headers, params }).pipe(
+    console.log(keyword.toString());
+    
+    // Agregar parámetros de búsqueda al objeto HttpParams
+    if (keyword) {
+      params = params.set('keyword', keyword.toString());
+    }
+
+    return this.http.get<Song[]>(`${this.apiUrl}/search`, { headers, params }).pipe(
       catchError(this.handleError)
     );
   }
