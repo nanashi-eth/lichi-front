@@ -21,8 +21,8 @@ Este proyecto es una aplicación web de música desarrollada con Angular 17. Pro
 
 ## Documentación
 
-- [Documentación de Angular](https://angular.io/docs)
-- [Documentación de Angular CLI](https://angular.io/cli)
+- [Documentación de Angular](https://angular.dev/overview)
+- [Documentación de Angular CLI]([https://angular.dev/cli])
 - [Documentación de RxJS](https://rxjs.dev/guide/overview)
 - [Documentación de JWT](https://jwt.io/introduction/)
 - [Documentación de Node.js](https://nodejs.org/en/docs/)
